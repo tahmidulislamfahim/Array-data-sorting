@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-void printmaxactivities(int s[],int f[],int n)
+void maxactivities(int start[],int finish[],int n)
 {
     int i,j;
     cout<<"following activities are selected:\n";
@@ -8,19 +8,25 @@ void printmaxactivities(int s[],int f[],int n)
     cout<<i<<" ";
     for(j=1;j<n;j++)
     {
-        if(s[j]>=f[i])
+        if(start[j]>=finish[i])
         {
             cout<<j<<" ";
             i=j;
         }
     }
-
 }
 int main()
 {
-    int s[]={0,1,2,3,6,9};
-    int f[]={1,2,4,5,8,11};
-    int n=sizeof(s)/sizeof(s[0]);
-    printmaxactivities(s,f,n);
+    int size;
+    cout<<"Input Size: ";
+    cin>>size;
+    int start[size];
+    int finish[size];
+    for(int i=0;i<size;i++)
+    {
+        cout<<"Input start,finish of activity "<<i<<": ";
+        cin>>start[i]>>finish[i];
+    }
+    maxactivities(start,finish,size);
     return 0;
 }
